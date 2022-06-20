@@ -1,0 +1,270 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  country: String!
+  city: String!
+  position: String!
+  telephone: String!
+  dateOfBirth: String
+  avatarUrl: String!
+  tags: [String!]!
+  skills: [String!]!
+  mission: [String!]!
+  vision: [String!]!
+  interests: [String!]!
+  referralCode: String!
+  banUntilDate: DateTime
+  banForever: Boolean
+  referrer: User
+  logoUrl: String
+  backgroundUrl: String
+  resumeUrl: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Preferences {
+  allowNotifications: Boolean!
+}
+
+type Account {
+  user: User!
+  preferences: Preferences!
+}
+
+type ResumeOutput {
+  summary: String!
+  experience: String!
+  education: String!
+  awards: String!
+}
+
+type Message {
+  id: ID!
+  sender: User!
+  roomId: String!
+  body: String!
+  date: DateTime!
+  receiverId: String!
+}
+
+type Room {
+  id: ID!
+  closed: DateTime
+  name: String!
+  inviteLink: String!
+  type: RoomType!
+  user: User!
+  participants: [Participant!]!
+}
+
+enum RoomType {
+  Meeting
+  Webinar
+}
+
+type ParticipantTrackOptions {
+  enabled: Boolean!
+  muted: Boolean!
+  clientId: String
+  userId: String
+  producerOptions: JSON
+  mediaKind: String
+  mediaType: String
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type ParticipantMedia {
+  userName: String!
+  audio: ParticipantTrackOptions!
+  video: ParticipantTrackOptions!
+  screen: ParticipantTrackOptions!
+}
+
+type Participant {
+  id: ID!
+  user: User!
+  role: ParticipantRole!
+  media: ParticipantMedia!
+  raiseHand: Boolean
+  kicked: Boolean!
+  muted: Boolean!
+}
+
+enum ParticipantRole {
+  Owner
+  Participant
+}
+
+type TransportOptions {
+  id: String!
+  iceCandidates: JSON!
+  iceParameters: JSON!
+  dtlsParameters: JSON!
+}
+
+type ConsumerOptions {
+  id: String!
+  producerId: String!
+  rtpParameters: JSON!
+  appData: JSON!
+}
+
+type RouterOptions {
+  rtpCapabilities: JSON!
+}
+
+type ProducerOptions {
+  id: String!
+  kind: String!
+  rtpParameters: JSON!
+  appData: JSON!
+}
+
+type Bookmark {
+  id: ID!
+  date: DateTime!
+  topic: String!
+  text: String!
+  user: User!
+}
+
+type Record {
+  id: String!
+  name: String!
+  date: DateTime!
+  fileId: String!
+}
+
+type AvikastFile {
+  id: ID!
+  name: String!
+  user: User!
+  type: AvikastFileType!
+  fileId: String
+}
+
+enum AvikastFileType {
+  File
+  Directory
+}
+
+type ResumeOutput {
+  summary: String!
+  experience: String!
+  education: String!
+  awards: String!
+}
+
+type Query {
+  myAccount: Account!
+  users: [User!]!
+  referrersByUserId(userId: String!): [User!]!
+  getResume: ResumeOutput
+  userById(userId: String!): User!
+  rooms: [Room!]!
+  roomById(roomId: String!): Room!
+  room: Room
+  userRooms: [Room!]
+  participants(roomId: String!): [Participant!]!
+  participantsTracks(roomId: String!): [ParticipantMedia!]!
+  webinarOwner(roomId: String!): Participant!
+  inviteLinkByRoomById(roomId: String!): String!
+  getRouter(roomId: String!): RouterOptions!
+  getProducer(roomId: String!): ProducerOptions!
+  getProducers(roomId: String!): [ProducerOptions!]!
+  startRecording(audioProducerId: String, producerId: String, roomId: String!): Boolean!
+  stopRecording(audioProducerId: String, producerId: String, roomId: String): Boolean!
+  bookmarks: [Bookmark!]!
+  messagesByRoom(roomId: String!): [Message!]!
+  messageById(messageId: String!): Message!
+  records: [Record!]!
+  avikastFiles(parent: String): [AvikastFile!]!
+  getImages: [AvikastFile!]!
+  getResume: ResumeOutput
+  getResumeLink: String
+}
+
+type Mutation {
+  updateMyAccount(user: UserUpdateRequest!): Account!
+  updateUserImage(fileId: String!): Boolean!
+  updateUserLogoImage(fileId: String!): Boolean!
+  updateUserBackgroundImage(fileId: String!): Boolean!
+  banUsersTemporary(untilDate: String!, userIds: [String!]!): Boolean!
+  banUsersPermanently(userIds: [String!]!): Boolean!
+  restoreUsers(userIds: [String!]!): Boolean!
+  deleteUsers(userIds: [String!]!): Boolean!
+  uploadResume(fileId: String!): Boolean!
+  createRoom(password: String, passwordProtected: Boolean!, type: RoomType!, name: String!): Room!
+  deleteRooms(roomIds: [String!]!): Boolean!
+  joinRoom(password: String, inviteLink: String!): Room!
+  raiseHand(raiseHand: Boolean!, roomId: String!): Boolean!
+  leaveRoom(roomId: String!): Boolean!
+  closeRoom(roomId: String!): Boolean!
+  mute(producerId: String!, roomId: String!, userId: String!, source: String!, action: String!): Boolean!
+  muteAll(roomId: String!, userId: String!, action: String!): Boolean!
+  kick(roomId: String!, userId: String!): Boolean!
+  createTransport(clientId: String!, direction: String!, roomId: String!): TransportOptions!
+  connectTransport(quality: String!, clientId: String!, direction: String!, dtlsParameters: JSON!, roomId: String!): Boolean!
+  createProducer(mediaType: MediaType!, mediaKind: MediaKind!, rtpParameters: JSON!, clientId: String!, roomId: String!, transportId: String!): ProducerOptions!
+  createConsumer(clientId: String!, rtpCapabilities: JSON!, roomId: String!, producerId: String!): ConsumerOptions!
+  playPauseMedia(roomId: String!, status: Boolean!, media: String!): Boolean!
+  addBookmark(roomId: String!, text: String!): [Boolean!]!
+  createMessage(receiverId: String, messageBody: String!, roomId: String!): Message!
+  deleteRecord(id: String!): Boolean!
+  addAvikastFile(parent: String, fileId: String!, name: String!): AvikastFile!
+  createAvikastDirectory(parent: String, name: String!): AvikastFile!
+  deleteAvikastFile(id: String!): Boolean!
+  deleteAvikastDirectory(id: String!): Boolean!
+  saveResume(resume: ResumeInput!): Boolean!
+}
+
+input UserUpdateRequest {
+  name: String
+  email: String
+  country: String
+  city: String
+  position: String
+  telephone: String
+  dateOfBirth: DateTime
+  tags: [String!]
+  skills: [String!]
+  mission: [String!]
+  vision: [String!]
+  interests: [String!]
+  referralCode: String
+}
+
+enum MediaType {
+  userMedia
+  screenShare
+}
+
+enum MediaKind {
+  audio
+  video
+}
+
+input ResumeInput {
+  summary: String!
+  experience: String!
+  education: String!
+  awards: String!
+}
+
+type Subscription {
+  roomSub(roomId: String!): Room!
+  messageAdded(userId: String!, roomId: String!): Message!
+}

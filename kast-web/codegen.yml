@@ -1,0 +1,10 @@
+schema: schema.graphql
+generates:
+  ./src/api/graphql/types.ts:
+    plugins:
+      - typescript
+config:
+  scalars:
+    DateTime: string
+    JSON: object
+  typesPrefix: GQL

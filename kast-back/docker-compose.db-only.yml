@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  db:
+    image: bitnami/mongodb:4.2.8
+    ports:
+      - 27017:27017
+    volumes:
+      - db:/bitnami/mongodb
+    environment:
+      MONGODB_ROOT_PASSWORD: admin
+      MONGODB_USERNAME: avikast
+      MONGODB_PASSWORD: admin
+      MONGODB_DATABASE: avikast
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_ADVERTISED_HOSTNAME: db
+      MONGODB_REPLICA_SET_KEY: avikastrs0
+volumes:
+  db:

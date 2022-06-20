@@ -1,0 +1,58 @@
+import IUserStore from './IUserStore';
+import { ID } from 'entities/Common';
+import { Model } from 'mongoose';
+import UserModel from '../../models/UserModel';
+import RoomModel from 'database/models/RoomModel';
+import LocalLoginModel from 'database/models/LocalLoginModel';
+export default class UserStore implements IUserStore {
+    private userModel;
+    private roomModel;
+    private localLoginModel;
+    constructor(userModel: Model<UserModel>, roomModel: Model<RoomModel>, localLoginModel: Model<LocalLoginModel>);
+    private populate;
+    getUser(userId: ID): Promise<import("../../entities/User").default | undefined>;
+    getUsers(): Promise<import("../../entities/User").default[]>;
+    deleteUsers(userIds: string[]): Promise<void>;
+    banUsersTemporary(userIds: string[], untilDate: string): Promise<void>;
+    banUsersPermanently(userIds: string[]): Promise<void>;
+    restoreUsers(userIds: string[]): Promise<void>;
+    createUser(data: {
+        name: string;
+        email: string;
+        country: string;
+        city: string;
+        position: string;
+        telephone: string;
+        dateOfBirth: Date;
+        avatarUrl: string;
+        tags: string[];
+        skills: string[];
+        mission: string[];
+        vision: string[];
+        interests: string[];
+        referralCode: string;
+        referrer: string | undefined;
+    }): Promise<import("../../entities/User").default>;
+    updateUser(userId: string, data: {
+        name: string | undefined;
+        country: string | undefined;
+        city: string | undefined;
+        position: string | undefined;
+        telephone: string | undefined;
+        dateOfBirth: Date | undefined;
+        tags: string[] | undefined;
+        skills: string[] | undefined;
+        mission: string[] | undefined;
+        vision: string[] | undefined;
+        interests: string[] | undefined;
+        referralCode: string | undefined;
+    }): Promise<void>;
+    updateUserImage(myUserId: string, fileId: string): Promise<boolean>;
+    updateUserLogoImage(myUserId: string, fileId: string): Promise<boolean>;
+    updateUserBackgroundImage(myUserId: string, fileId: string): Promise<boolean>;
+    updateUserResumeUrl(myUserId: string, fileId: string): Promise<boolean>;
+    findUserByIdOrThrow(id: string): Promise<import("../../entities/User").default>;
+    getUserName(id: string): Promise<string>;
+    findUserByReferralCode(referralCode: string): Promise<import("../../entities/User").default | undefined>;
+    getReferrersByUserId(id: string): Promise<import("../../entities/User").default[]>;
+}

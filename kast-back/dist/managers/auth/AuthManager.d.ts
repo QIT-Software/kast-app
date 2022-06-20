@@ -1,0 +1,42 @@
+import IAuthManager from './IAuthManager';
+import AuthResponse from '../../entities/AuthResponse';
+import IUserStore from '../../database/stores/user/IUserStore';
+import ILoginStore from '../../database/stores/login/ILoginStore';
+import LocalLogin from '../../database/entities/LocalLogin';
+import ISessionStore from '../../database/stores/session/ISessionStore';
+import { IJwtService } from './jwt/IJwtService';
+import { ID } from 'entities/Common';
+import AppType from 'entities/AppType';
+import { Platform } from 'entities/Platform';
+import SessionInfo from 'entities/SessionInfo';
+import INotificationService from 'services/notifications/INotificationService';
+export default class AuthManager extends IAuthManager {
+    private readonly userStore;
+    private readonly loginStore;
+    private readonly sessionStore;
+    private readonly jwtService;
+    private readonly notificationService;
+    constructor(userStore: IUserStore, loginStore: ILoginStore, sessionStore: ISessionStore, jwtService: IJwtService, notificationService: INotificationService);
+    register(appType: AppType, platform: Platform, email: string, password: string, name: string, referralCode: string): Promise<AuthResponse>;
+    login(appType: AppType, platform: Platform, email: string, password: string): Promise<AuthResponse>;
+    private static checkPasswordOrThrow;
+    private findLoginOrThrow;
+    private createLocalLogin;
+    private static createPasswordHash;
+    private static isPasswordValid;
+    private static createCryptoToken;
+    private createSession;
+    refresh(refreshToken: string): Promise<{
+        jwt: string;
+        refreshToken: string;
+    }>;
+    private createSessionInfo;
+    getSessionFromTokenOrThrow(jwt: string): Promise<SessionInfo>;
+    validateSessionOrThrow(jwt: string): Promise<SessionInfo>;
+    private static generateNewPassword;
+    private static generateReferralCode;
+    recoverPassword(email: string): Promise<void>;
+    updatePassword(login: LocalLogin, password: string): Promise<void>;
+    changePassword(userId: ID, oldPassword: string, password: string): Promise<void>;
+    updateFirebaseToken(token: string, registrationId: string): Promise<void>;
+}

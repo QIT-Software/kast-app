@@ -1,0 +1,44 @@
+import IMediaManager from 'managers/media/IMediaManager';
+import IMediasoup from 'mediasoup/IMediasoup';
+import { RtpCapabilities, RtpParameters } from 'mediasoup/lib/types';
+import { MediaKind, MediaType, MuteAction, Quality } from 'entities/Mediasoup';
+import ILogger from 'utils/ILogger';
+import IRecordService from 'services/record/IRecordSevice';
+import { IConfigService } from '@spryrocks/config-node';
+import WebRtcTransport from 'mediasoup/WebRtcTransport';
+import Producer from 'mediasoup/Producer';
+import Router from 'mediasoup/Router';
+export default class MediaManager extends IMediaManager {
+    private readonly mediasoup;
+    private readonly logger;
+    private readonly recordService;
+    private readonly configService;
+    constructor(mediasoup: IMediasoup, logger: ILogger, recordService: IRecordService, configService: IConfigService);
+    createRouter(roomId: string): Promise<Router>;
+    createTransport(roomId: string, userId: string, direction: 'send' | 'receive', clientId: string): Promise<WebRtcTransport>;
+    private removeNotUsedTransports;
+    createPlainTransport(roomId: string, userId: string, direction: 'send' | 'receive', clientId: string): Promise<import("../../mediasoup/PlainTransport").default>;
+    connectTransport(roomId: string, dtlsParameters: object, direction: 'send' | 'receive', clientId: string, quality: Quality): Promise<void>;
+    findTransportByRoomId(roomId: string, direction: 'send' | 'receive'): import("../../mediasoup/Transport").default | undefined;
+    static findWebRtcTransportsByUserId(router: Router, roomId: string, userId: string, direction: 'send' | 'receive'): WebRtcTransport[];
+    findTransport(roomId: string, direction: 'send' | 'receive', clientId: string): import("../../mediasoup/Transport").default | undefined;
+    createProducer(roomId: string, transportId: string, clientId: string, userId: string, rtpParameters: RtpParameters, mediaType: MediaType, mediaKind: MediaKind): Promise<Producer>;
+    createConsumer(roomId: string, producerId: string, rtpCapabilities: RtpCapabilities, clientId: string, userId: string): Promise<import("../../mediasoup/Consumer").default>;
+    findRouter(roomId: string): Promise<Router | undefined>;
+    findOrCreateRouter(roomId: string): Promise<Router>;
+    findProducer(roomId: string, userId: string): Promise<Producer>;
+    findProducerById(roomId: string, producerId: string): Promise<Producer>;
+    findAllProducersByUserId(roomId: string, userId: string): Promise<Producer[]>;
+    getProducers(roomId: string): Promise<{
+        id: string;
+        kind: MediaKind;
+        rtpParameters: object;
+        appData: object;
+    }[]>;
+    findConsumer(roomId: string, clientId: string, userId: string): Promise<import("../../mediasoup/Consumer").default>;
+    startRecording(roomId: string, userId: string, recordId: string, producerId?: string, audioProducerId?: string): Promise<boolean>;
+    stopRecording(roomId: string): Promise<boolean>;
+    leaveRoom(roomId: string, userId: string): Promise<boolean>;
+    closeRouter(roomId: string): Promise<boolean>;
+    muteProducer(action: MuteAction, roomId: string, userId: string, producerId: string): Promise<boolean>;
+}

@@ -1,0 +1,277 @@
+.paper {
+  width: 630px;
+  margin: auto;
+}
+.firstLine{
+
+}
+.text {
+  font-family: DM Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #727272;
+  margin-right: 5px;
+}
+.link{
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-bottom-color: #D11AA9;
+  background-color: transparent;
+  font-family: DM Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #D11AA9;
+  margin-right: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.secondLine{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.fieldContainer{
+  margin-top: 15px;
+  flex: 0 0 30%;
+
+  & div {
+    background: none;
+  }
+
+  &__double{
+    width: 48%;
+  }
+}
+.fieldTitle{
+  font-family: DM Sans, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #727272;
+  white-space: nowrap
+}
+.button{
+  border-width: 0;
+  font-family: DM Sans, sans-serif;
+  width: max-content;
+  padding: 13px 50px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 22px;
+  color: #FFF;
+  background: linear-gradient(98.58deg, #882BFF 4.5%, rgba(255, 0, 122, 0.76) 99.14%), linear-gradient(105.75deg, #6580FF 0%, #E978A7 100.17%);
+}
+.buttonText{
+  color: rgba(215, 5, 194, 0.76);
+
+}
+.buttonContainer{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  @media screen and (max-width: 600px) {
+    margin-top: 15px;
+  }
+}
+.privacy{
+  font-family: DM Sans, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+}
+.forgotPass{
+  font-family: DM Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 32px;
+  margin-top: 10px;
+  &__text{
+    color: #000;
+  }
+  &__link{
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 18px;
+    color: #C82FC6;
+  }
+}
+.radioContainer{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  @media screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+.rememberMe {
+  font-family: DM Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #727272;
+}
+
+.avatar{
+}
+
+.submit{
+}
+.form {
+  width: 100%;
+  &__field {
+    border-radius: 10px;
+  }
+  &__btnContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    &__yellow {
+     // @extend %btn-shared;
+      background: #E7A90A;
+      &:hover {
+        background:  #E7A90A;
+      }
+    }
+    &__blue {
+     // @extend %btn-shared;
+      margin-top: 20px;
+      &:hover {
+      }
+    }
+  }
+  &__forgotPassword {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  @media screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+.logoImg{
+  margin-right: 20px;
+}
+.logoText{
+  font-family: Alegreya Sans SC, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: #C82FC6;
+}
+
+.titleContainer{
+  padding-right: 50px;
+  width: max-content;
+  position: relative;
+}
+.titleText{
+  width: content-box;
+  font-family: DM Sans, sans-serif;
+  font-weight: bold;
+  font-size: 74px;
+  line-height: 85px;
+  margin: 30px auto 30px;
+  color: #333333;
+  @media screen and (max-width: 600px) {
+    margin: 10px auto;
+    line-height: 30px;
+    font-size: 25px;
+  }
+}
+
+.image{
+  flex: 0 1 50%;
+  max-width: 850px;
+  height: inherit;
+
+  background-repeat: no-repeat;
+  background-image: url('../assets/main_bg.png');
+  background-size: cover;
+  background-position: right center;
+  width: 50%;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
+.mainContent {
+  margin-right: 50px;
+  margin-top: 50px;
+  padding: 10px;
+  flex: 1 1 50%;
+  width: 900px;
+  justify-content: space-between;
+  height: fit-content;
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+
+  & > div {
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
+    img {
+      z-index: 10;
+      width: 390px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 72px);
+  }
+}
+.root {
+display: flex;
+  height: 110vh;
+}
+
+.authHeader {
+  float: right;
+  height: 20px;
+}
+
+.tip {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+.authHeader {
+  font-family: DM Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 32px;
+  &__text{
+    color: #727272;
+    margin-right: 5px;
+  }
+  &__link{
+    color: #C82FC6;
+  }
+}
+
+

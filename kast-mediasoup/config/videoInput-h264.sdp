@@ -1,0 +1,9 @@
+v=0
+o=- 0 0 IN IP4 127.0.0.1
+s=-
+c=IN IP4 127.0.0.1
+t=0 0
+m=video 7000 RTP/AVPF 125
+a=rtcp:7001
+a=rtpmap:125 H264/90000
+a=fmtp:125 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f

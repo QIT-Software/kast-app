@@ -1,0 +1,1 @@
+{"version":3,"file":"LoginRequest.js","sourceRoot":"","sources":["../../../src/api/entities/LoginRequest.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,qDAAqD;AAErD,MAAqB,YAAY;IAC/B,YAAY,KAAa,EAAE,QAAgB;QACzC,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;QACnB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;IAC3B,CAAC;CAQF;AALC;IADC,4BAAU,EAAE;;2CACC;AAId;IAFC,4BAAU,EAAE;IACZ,0BAAQ,EAAE;;8CACM;AAXnB,+BAYC"}

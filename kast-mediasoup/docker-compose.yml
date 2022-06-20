@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  mediasoup:
+    image: avikast-mediasoup
+    build: .
+    networks:
+      - backend
+    ports:
+      - 1550:1550
+    environment:
+      NODE_ENV: testing
+volumes:
+  db:
+networks:
+  backend:

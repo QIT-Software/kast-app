@@ -1,0 +1,13 @@
+const prefix = 'FILE_';
+
+export default {
+  FETCH_FILES: `${prefix}FETCH_FILE`,
+  FETCH_FILES_COMPLETED: `${prefix}FETCH_FILES_COMPLETED`,
+
+  UPLOAD_FILE: `${prefix}UPLOAD_FILE`,
+
+  CREATE_DIRECTORY: `${prefix}CREATE_DIRECTORY`,
+
+  DELETE_FILE: `${prefix}DELETE_FILE`,
+  DELETE_DIRECTORY: `${prefix}DELETE_DIRECTORY`,
+};

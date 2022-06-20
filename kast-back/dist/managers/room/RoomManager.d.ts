@@ -1,0 +1,51 @@
+import IRoomManager from './IRoomManager';
+import IMediasoupService from '../../services/mediasoup/IMediasoupService';
+import IRoomStore from 'database/stores/room/IRoomStore';
+import Room, { MuteAction, MuteSource, RoomType } from 'entities/Room';
+import { ParticipantMedia } from 'entities/Participant';
+import IUserStore from 'database/stores/user/IUserStore';
+import { Observable } from 'rxjs';
+import { PlayingType } from 'entities/Mediasoup';
+import ILogger from '../../utils/ILogger';
+export default class RoomManager extends IRoomManager {
+    private readonly roomStore;
+    private readonly mediasoupService;
+    private readonly userStore;
+    private readonly logger;
+    constructor(roomStore: IRoomStore, mediasoupService: IMediasoupService, userStore: IUserStore, logger: ILogger);
+    createRoom(userId: string, name: string, type: RoomType, passwordProtected: boolean, password: string | undefined): Promise<Room>;
+    joinRoom(userId: string, inviteLink: string, password: string | undefined): Promise<Room>;
+    getRoom(userId: string): Promise<string | undefined>;
+    getRoomByUserId(userId: string): Promise<{
+        id: string;
+        closed: Date | undefined;
+        name: string;
+        inviteLink: string;
+        type: RoomType;
+        user: import("../../entities/User").default;
+    } | undefined>;
+    getRoomById(userId: string, roomId: string): Promise<{
+        id: string;
+        closed: Date | undefined;
+        name: string;
+        inviteLink: string;
+        type: RoomType;
+        user: import("../../entities/User").default;
+    }>;
+    getRooms(): Promise<Room[]>;
+    getUserRooms(userId: string): Promise<Room[]>;
+    deleteRooms(roomIds: string[]): Promise<void>;
+    private static generateCode;
+    getParticipants(userId: string, roomId: string): Promise<import("../../entities/Participant").default[]>;
+    getParticipantsTracks(userId: string, roomId: string): Promise<ParticipantMedia[]>;
+    getWebinarOwner(userId: string, roomId: string): Promise<import("../../entities/Participant").default>;
+    getInviteLink(roomId: string): Promise<string>;
+    raiseHand(roomId: string, userId: string, raiseHand: boolean): Promise<boolean>;
+    leaveRoom(roomId: string, userId: string): Promise<boolean>;
+    closeRoom(roomId: string): Promise<boolean>;
+    kick(roomOwnerUserId: string, userId: string, roomId: string): Promise<boolean>;
+    mute(action: MuteAction, source: MuteSource, userId: string, owner: string, roomId: string, producerId: string): Promise<boolean>;
+    muteAll(action: MuteAction, userId: string, owner: string, roomId: string): Promise<boolean>;
+    playPauseMedia(media: PlayingType, status: boolean, roomId: string, userId: string): Promise<void>;
+    roomObservable(): Observable<Room>;
+}

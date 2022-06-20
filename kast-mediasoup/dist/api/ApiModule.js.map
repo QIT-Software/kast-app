@@ -1,0 +1,1 @@
+{"version":3,"file":"ApiModule.js","sourceRoot":"","sources":["../../src/api/ApiModule.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,2CAAsC;AACtC,gFAAwD;AACxD,6DAAqD;AAcrD;IAAA,IAAa,SAAS,GAAtB,MAAa,SAAS;KAAG,CAAA;IAAZ,SAAS;QAZrB,eAAM,CAAC;YACN,OAAO,EAAE;gBAEP,6BAAa;aAEd;YACD,WAAW,EAAE;gBAEX,6BAAmB;aACpB;YACD,OAAO,EAAE,EAAE;SACZ,CAAC;OACW,SAAS,CAAG;IAAD,gBAAC;KAAA;AAAZ,8BAAS"}

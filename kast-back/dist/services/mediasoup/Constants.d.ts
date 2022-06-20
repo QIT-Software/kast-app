@@ -1,0 +1,1 @@
+export declare const MEDIASOUP_SERVICE = "MEDIASOUP_SERVICE";

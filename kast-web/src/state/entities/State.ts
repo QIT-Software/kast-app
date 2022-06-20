@@ -1,0 +1,50 @@
+import {Auth} from 'state/entities/Auth';
+import {SnackBar} from 'state/entities/SnackBar';
+import User from 'entities/User';
+import {LoadableContainer} from './LoadableContainer';
+import Bookmark from 'entities/Bookmark';
+import DashboardContainer from './DashboardContainer';
+import {AvikastDirectory, AvikastFile} from 'entities/AvikastFiles';
+import MediasoupContainer from 'state/entities/MediasoupContainer';
+import Record from 'entities/Record';
+import Room from 'entities/Room';
+import ParticipantsContainer from 'state/entities/ParticipantsContainer';
+import {Message} from 'state/entities/Chat';
+import UserRoomsContainer from 'state/entities/UserRoomsContainer';
+import ResumeContainer from 'state/entities/ResumeContainer';
+
+export type UserProfileReducerState = LoadableContainer<User>;
+export type BookmarksReducerState = LoadableContainer<{data: Bookmark[]}>;
+export type FilesReducerState = LoadableContainer<{
+  id: string;
+  name: string;
+  files: AvikastFile[];
+  directories: AvikastDirectory[];
+}>;
+export type DashboardReducerState = DashboardContainer;
+export type ChatReducerState = LoadableContainer<{data: Message[]}>;
+export type MediasoupReducerState = MediasoupContainer;
+export type RecordsReducerState = LoadableContainer<{data: Record[]}>;
+export type RoomReducerState = LoadableContainer<{data: Room}>;
+export type UserReducerState = LoadableContainer<{user: User}>;
+export type UserReferrersReducerState = LoadableContainer<{userReferrers: User[]}>;
+export type UserRoomsReducerState = UserRoomsContainer;
+export type ResumeReducerState = ResumeContainer;
+export type ParticipantsState = ParticipantsContainer;
+export default interface State {
+  auth: Auth;
+  snackBar: SnackBar;
+  userProfile: UserProfileReducerState;
+  bookmarks: BookmarksReducerState;
+  dashboard: DashboardReducerState;
+  files: FilesReducerState;
+  chat: ChatReducerState;
+  mediasoup: MediasoupReducerState;
+  records: RecordsReducerState;
+  room: RoomReducerState;
+  user: UserReducerState;
+  userRooms: UserRoomsReducerState;
+  participants: ParticipantsState;
+  resume: ResumeReducerState;
+  userReferrers: UserReferrersReducerState;
+}

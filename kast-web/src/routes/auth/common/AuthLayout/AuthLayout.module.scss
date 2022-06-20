@@ -1,0 +1,159 @@
+
+
+.tip{
+  font-family: DM Sans, sans-serif;
+  font-size: 18px;
+  text-align: right;
+  color: #000;
+}
+.tipText{
+  font-family: DM Sans, sans-serif;
+}
+.tipHref{
+  color: #C82FC6;
+  margin-left: 10px;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  @media screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+.logoImg{
+  margin-right: 20px;
+}
+.logoText{
+  font-family: Alegreya Sans SC, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: #C82FC6;
+}
+
+.titleContainer{
+  padding-right: 50px;
+  width: max-content;
+  position: relative;
+}
+.titleText{
+  width: content-box;
+  font-family: DM Sans, sans-serif;
+  font-weight: bold;
+  font-size: 74px;
+  line-height: 85px;
+  margin: 30px auto 50px;
+  color: #333333;
+  @media screen and (max-width: 600px) {
+    margin: 10px auto;
+    line-height: 30px;
+    font-size: 25px;
+  }
+}
+.contentContainer{
+  width: 100%;
+  padding: 2%;
+}
+
+.mainContentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 700px;
+  min-width: 370px;
+}
+
+.mainContent {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+
+  & > div {
+    width: 50%;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
+    img {
+      z-index: 10;
+      width: 390px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 72px);
+  }
+}
+
+.root{
+
+}
+
+.image{
+  position: absolute;
+  right: 54%;
+  background-repeat: no-repeat;
+  background-image: url('./assets/main_bg.png');
+  background-size: cover;
+  background-position: right center;
+  width: 50%;
+  height: 100%;
+  @media screen and (max-width: 600px) {
+display: none;
+  }
+}
+
+.paper {
+
+}
+
+.avatar{
+}
+
+.form{
+  width: 100%;
+}
+
+.submit{
+}
+.logo{
+margin-top: 10px;
+}
+.logoContainer{
+
+}
+
+.authHeader {
+  font-family: DM Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 32px;
+  &__text{
+    color: #727272;
+    margin-right: 5px;
+  }
+  &__link{
+    color: #C82FC6;
+  }
+}

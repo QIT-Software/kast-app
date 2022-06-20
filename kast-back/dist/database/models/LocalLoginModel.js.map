@@ -1,0 +1,1 @@
+{"version":3,"file":"LocalLoginModel.js","sourceRoot":"","sources":["../../../src/database/models/LocalLoginModel.ts"],"names":[],"mappings":";;AAAA,qCAAsC;AAIzB,QAAA,gBAAgB,GAAG,qBAAY,CAAC,YAAY,EAAE;IACzD,IAAI,EAAE,EAAC,IAAI,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,EAAC;IACjC,KAAK,EAAE,EAAC,IAAI,EAAE,MAAM,EAAE,MAAM,EAAE,IAAI,EAAC;IACnC,YAAY,EAAE,MAAM;CACrB,CAAC,CAAC"}

@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  webapp:
+    image: webapp
+    build:
+      context: .
+      args:
+        buildEnv: production
+        buildPath:
+    ports:
+        - 80:80
+#  webapp-staging:
+#    image: webapp-staging
+#    build:
+#      context: .
+#      args:
+#        buildEnv: staging
+#        buildPath: /staging/app
+#    ports:
+#      - 801:80
